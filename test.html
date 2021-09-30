@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viwport" content="width=device-width, initialscale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Todo Tracke</title>
+        <body>
+            <h1 id='title'>Todo Tracker</h1>
+        
+            <form>
+                <input type="text" id="user-todo" placeholder="New Todo" required>
+            </form>
+            <h2 id="todo-header">Todos</h2>
+            <ul>
+            </ul>
+            <button id="clear">Clear ALL</button>
+        </body>
+        <script>
+            // creating variable to target the form, unordered list, button and the input
+            var ForField = document.querySelector('form');
+            var todoList = document.querySelector('ul');
+            var button = document.querySelector('button');
+            var input = document.getElementById('user-todo');
+
+            // attaching an event listener
+
+            ForField.addEventListener('submit',function(e){
+                // "preventDefault" stop the page from refreshing everytime we hit the enter button
+                e.preventDefault();
+                todoMaker(input.value);
+                input.value= '';
+            });
+
+            // TodoMaker creates an <li> with the input proided and attaches to the <ul>
+            var todoMaker = function(inputedValue){
+                var newItem = document.createElement('li');
+                newItem.textContent = inputedValue;
+                todoList.appendChild(newItem);
+
+            }
+            
+            // add event listener and a while loop to clear the todos
+
+        
+            var clearFirstElementOnClick = button.addEventListener('click', function(e){
+                    e.preventDefault();
+                    x = 0;
+                    console.log(` ${todoList.querySelectorAll('li').length} elements deleted `);
+
+                    while (x <todoList.querySelectorAll('li').length){
+                        todoList.removeChild(document.querySelector('li'))
+                    }})
+
+
+        </script>
+        </title>
+    </head>
+</html>
